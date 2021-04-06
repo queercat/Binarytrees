@@ -29,16 +29,39 @@ class Tree:
     def __init__(self, root_node = None):
         self.root_node = root_node
 
-    def print_tree(self, root_node):
+    def printTree(self, root_node):
         if root_node == None:
             return
 
         print(root_node.val)
         
-        self.print_tree(root_node.left)
-        self.print_tree(root_node.right)
+        self.printTree(root_node.left)
+        self.printTree(root_node.right)
 
         return root_node.val
+
+    def reverseTree(self, root_node):
+        if root_node == None:
+            return
+
+        root_node.left, root_node.right = root_node.right, root_node.left
+
+        self.reverseTree(root_node.left)
+        self.reverseTree(root_node.right)
+
+        return root_node
+
+    def isInTree(self, root_node, value):
+        if root_node == None:
+            return
+
+        if root_node.val == value:
+            return True
+
+        if self.isInTree(root_node.left, value) == True or self.isInTree(root_node.right, value) == True:
+            return True
+
+        return False
 
 def createNodes():
     root_node = Node(1)
@@ -63,7 +86,6 @@ def createNodes():
 
 def main():
     tree = createNodes()
-    tree.print_tree(tree.root_node)
-
+    
 if __name__ == "__main__":
     main()
