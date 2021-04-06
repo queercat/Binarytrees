@@ -23,7 +23,7 @@ class Node:
         while(linked_list.left != None):
             linked_list = linked_list.left
 
-            return linked_list
+        return linked_list
 
 class Tree:
     def __init__(self, root_node = None):
